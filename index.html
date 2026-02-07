@@ -1,0 +1,57 @@
+const daysData = [
+  "🌹 Rose Day: Ek rose accept kar lo… baaki sab apne aap samajh jaoge 😌",
+  "💍 Propose Day: Will you be mine? (NO sirf decoration ke liye hai 😈)",
+  "🍫 Chocolate Day: Chocolate share kar sakti hoon… feelings already yours 🤍",
+  "🧸 Teddy Day: Teddy nahi ho tum, par cuddle material poora ho 🫣",
+  "🤞 Promise Day: Drama main karungi, handle tum karoge 😌",
+  "🤗 Hug Day: Screen ke through hug possible nahi… YES pe click karo 💖",
+  "😘 Kiss Day: Kiss coupon Valentine ke din valid hai 😏"
+];
+
+let index = 0;
+const daysDiv = document.getElementById("days");
+
+function showNextDay() {
+  if (index < daysData.length) {
+    const p = document.createElement("div");
+    p.className = "day";
+    p.innerText = daysData[index];
+    daysDiv.appendChild(p);
+    index++;
+  }
+}
+setInterval(showNextDay, 1800);
+
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseover", () => {
+  noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+  noBtn.style.top = Math.random() * (window.innerHeight - 100) + "px";
+});
+
+document.getElementById("yesBtn").addEventListener("click", () => {
+  document.body.innerHTML = `
+    <h1>Oh no 😈💖</h1>
+    <p>Valentine Week successfully completed 😌</p>
+    <p>You are officially mine 💍</p>
+  `;
+});
+
+const music = document.getElementById("bgMusic");
+let played = false;
+function playMusic() {
+  if (!played) {
+    music.play();
+    played = true;
+  }
+}
+
+const items = ["💖","🌹","🍫","🧸","🤗","😘","🍕","🍩"];
+setInterval(() => {
+  const el = document.createElement("div");
+  el.className = "floating";
+  el.innerHTML = items[Math.floor(Math.random()*items.length)];
+  el.style.left = Math.random()*100 + "vw";
+  el.style.animationDuration = (Math.random()*3+3)+"s";
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 5000);
+}, 700);
